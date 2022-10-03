@@ -1,0 +1,16 @@
+body {
+    margin: 0;
+}
+
+#container {
+    position: absolute;
+    left: 50.0vw;
+    top: 50vh;
+    z-index: 1;
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+canvas {
+    display: block;
+}
