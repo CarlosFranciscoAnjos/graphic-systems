@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Circle Equation</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <div id="title">Circle Equation</div>
+    <br />
+    <table>
+      <tr>
+        <td>
+          <label>Number of points (n):</label>
+          <input
+            type="number"
+            id="n"
+            min="2"
+            max="60"
+            step="1"
+            value="8"
+            required
+          />
+        </td>
+        <td>
+          <label>Radius (r):</label>
+          <input
+            type="number"
+            id="r"
+            min="0.1"
+            max="10.0"
+            step="0.1"
+            value="1.0"
+            required
+          />
+        </td>
+        <td>
+          <label>Center coordinates (x0):</label>
+          <input
+            type="number"
+            id="x0"
+            min="-10.0"
+            max="10.0"
+            step="0.1"
+            value="0.0"
+            required
+          />
+          <label>(y0):</label>
+          <input
+            type="number"
+            id="y0"
+            min="-10.0"
+            max="10.0"
+            step="0.1"
+            value="0.0"
+            required
+          />
+        </td>
+        <td>
+          <input type="button" id="build" value="Build table" />
+        </td>
+      </tr>
+    </table>
+    <br />
+    <table id="output" style="width: 50%">
+      <colgroup>
+        <col style="width: 22%" />
+        <col span="3" style="width: 26%" />
+      </colgroup>
+      <tr>
+        <th class="output"></th>
+        <th class="output">t (degrees)</th>
+        <th class="output">x</th>
+        <th class="output">y</th>
+      </tr>
+    </table>
+    <script src="main.js"></script>
+  </body>
+</html>
