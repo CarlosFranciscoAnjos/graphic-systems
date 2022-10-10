@@ -136,15 +136,16 @@ function animate() {
   requestAnimationFrame(animate);
   // Update watches time
   watch0.update(); // Oporto
-  watch1.update(); // Oporto
-  watch2.update(); // Oporto
-  watch3.update(); // Oporto
-  watch4.update(); // Oporto
   /* To-do #7 - Animate the remaining watches of the scene
             ...; // New York
             ...; // Paris
             ...; // Sydney
             ...; // Tokyo */
+  watch1.update(); // New York
+  watch2.update(); // Paris
+  watch3.update(); // Sydney
+  watch4.update(); // Tokyo
+
   renderer.render(scene, camera);
 }
 

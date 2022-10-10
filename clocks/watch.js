@@ -114,12 +114,28 @@ export default class Watch extends THREE.Group {
         material = new THREE.LineBasicMaterial(...);
         this.handH = new THREE.LineSegments(...);
         this.add(this.handH); */
+    points = [
+      new THREE.Vector2(0.0, 0.0),
+      new THREE.Vector2(0.5 * radius, 0.0),
+    ];
+    geometry = new THREE.BufferGeometry().setFromPoints(points);
+    material = new THREE.LineBasicMaterial({ color: handsHMColor });
+    this.handH = new THREE.LineSegments(geometry, material);
+    this.add(this.handH);
 
     /* To-do #4: Create the minute hand (a line segment) with length 0.7 * radius, pointing at 0.0 radians (the positive X-semiaxis) and color handsHMColor
         points = [...];
         geometry = new THREE.BufferGeometry()...;
         this.handM = new THREE.LineSegments(...);
         this.add(this.handM); */
+    points = [
+      new THREE.Vector2(0.0, 0.0),
+      new THREE.Vector2(0.7 * radius, 0.0),
+    ];
+    geometry = new THREE.BufferGeometry().setFromPoints(points);
+    material = new THREE.LineBasicMaterial({ color: handsHMColor });
+    this.handM = new THREE.LineSegments(geometry, material);
+    this.add(this.handM);
 
     // Create the second hand (a line segment and a circle) pointing at 0.0 radians (the positive X-semiaxis)
     this.handS = new THREE.Group();
@@ -169,17 +185,22 @@ export default class Watch extends THREE.Group {
 
   update() {
     const time = Date().split(" ")[4].split(":").map(Number); // Hours: time[0]; minutes: time[1]; seconds: time[2]
+    const ms = new Date().getMilliseconds();
     time[0] = (time[0] + this.cities[this.cityIndex].timeZone) % 12;
     // Compute the second hand angle
-    let angle = Math.PI / 2.0 - (2.0 * Math.PI * time[2]) / 60.0;
+    let angle = Math.PI / 2.0 - (2.0 * Math.PI * time[2]) / 60.0 - (2.0 * Math.PI * ms) / 60000.0;
     this.handS.rotation.z = angle;
 
     /* To-do #5 - Compute the minute hand angle. It depends mostly on the current minutes value (time[1]), but you will get a more accurate result if you make it depend on the seconds value (time[2]) as well.
         angle = ...;
         this.handM.rotation.z = angle; */
+    angle = Math.PI / 2.0 - (2.0 * Math.PI * time[1]) / 60.0 - (2.0 * Math.PI * time[2]) / 3600;
+    this.handM.rotation.z = angle;
 
     /* To-do #6 - Compute the hour hand angle. It depends mainly on the current hours value (time[0]). Nevertheless, you will get a much better result if you make it also depend on the minutes and seconds values (time[1] and time[2] respectively).
         angle = ...;
         this.handH.rotation.z = angle; */
+    angle = Math.PI / 2.0 - (2.0 * Math.PI * time[0]) / 12.0 - (2.0 * Math.PI * time[1]) / 720.0;
+    this.handH.rotation.z = angle;
   }
 }
