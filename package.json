@@ -1,0 +1,23 @@
+{
+  "name": "graphic-systems",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CarlosFranciscoAnjos/graphic-systems.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CarlosFranciscoAnjos/graphic-systems/issues"
+  },
+  "homepage": "https://github.com/CarlosFranciscoAnjos/graphic-systems#readme",
+  "dependencies": {
+    "three": "^0.146.0"
+  }
+}
